@@ -1,0 +1,16 @@
+import org.testng.annotations.Test;
+
+public class LoginTestOnWindowsUsingChrome {
+
+	@Test(priority=1)
+	void setup()
+	{
+		
+	}
+	
+	@Test(priority=2)
+	void login()
+	{
+		
+	}
+}

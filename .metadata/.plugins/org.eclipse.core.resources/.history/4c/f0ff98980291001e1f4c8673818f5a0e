@@ -1,0 +1,9 @@
+
+public class LoginTestOnWindowsUsingChrome {
+
+	@Test(priority=1)
+	void setup()
+	{
+		
+	}
+}

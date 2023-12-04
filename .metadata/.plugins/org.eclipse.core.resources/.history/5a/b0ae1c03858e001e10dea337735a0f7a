@@ -1,0 +1,37 @@
+package com.HybridFrameworkStructure.TestCases;
+
+import java.io.IOException;
+
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.HybridFrameworkStructure.Utilities.XLUtility;
+
+public class TC_LoginExcelDDT_002 extends BaseClass {
+
+	//2 method yaha chhaiye one will do login process and other for dataProvider
+	@Test(dataProvider="LoginData")
+	public void LoginDDT()
+	{
+		
+	}
+	
+	@DataProvider(name="LoginData") // DataProvider ka name yaha mention krna hi hoga
+	String[][] getData() throws IOException
+	{
+		String path=System.getProperty("user.dir")+"/src/test/java/com/HybridFrameworkStructure/testDataFile/TestExcel.xlsx";  //yaha hme excel file jisme hmne user and passwrd rkhe hai wo loaction btana hai
+	//Now we will call the methods from XLutility
+		int rownumber=XLUtility.getRowCount(path, "Sheet1"); //file path and excel file name btana hoga
+		int colnumber=XLUtility.getCellCount(path, "Sheet1", 1);
+		
+		String logindata[][]=new String[rownumber][colnumber];
+		for(int i=1;i<=rownumber;i++)
+		{
+			for(int j=0;j<colnumber;j++)
+			{
+				logindata[i-1][j]=XLUtility.getCellData(path, "Sheet1", i, j); // yaha ham excel sheet ka 1,0 place ke data 0,0 par rakh rhe and so on
+			}
+		}
+		return logindata;
+	}
+}

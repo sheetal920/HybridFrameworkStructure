@@ -1,0 +1,13 @@
+package com.HybridFrameworkStructure.pageObjects;
+
+import org.openqa.selenium.WebDriver;
+
+public class AddCustomerPage{
+	WebDriver driver;
+	public void AddCustomerPage(WebDriver driver)
+	{
+		this.driver=driver;
+		
+	}
+	
+}

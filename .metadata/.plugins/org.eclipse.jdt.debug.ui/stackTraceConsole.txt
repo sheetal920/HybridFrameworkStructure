@@ -1,0 +1,15 @@
+io.cucumber.junit.UndefinedStepException: The step 'user enter first name and last name' and 1 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@When("user enter first name and last name")
+public void user_enter_first_name_and_last_name() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("user should found Name along with email in the search table")
+public void user_should_found_name_along_with_email_in_the_search_table() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+

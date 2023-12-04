@@ -1,0 +1,26 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class LoginTestOnWindowsUsingChrome {
+
+	WebDriver driver;
+	@Test(priority=1)
+	void setup()
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+	}
+	
+	@Test(priority=2)
+	void login()
+	{
+		driver.get("https://practice.automationtesting.in/my-account/");
+		driver.findElement(By.id("username")).sendKeys("pavanoltraining");
+		driver.findElement(By.id("password")).sendKeys("Test@selenium123");
+		driver.findElement(By.name("login")).click();
+	}
+}

@@ -1,0 +1,52 @@
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class LoginTestOnWindowsUsingChrome {
+
+	public static WebDriver driver;
+	@Test(priority=1)
+	void setup() throws MalformedURLException
+	{
+		String nodeURL="http://192.168.69.188:26167/wd/hub";
+		ChromeOptions cp=new ChromeOptions();
+		cp.setCapability("platform", Platform.WIN10);
+		/*
+		DesiredCapabilities cap= DesiredCapabilities.chrome();
+	
+		cap.setBrowserName("chrome");
+		cap.setPlatform(Platform.WIN10);
+	  */
+		System.setProperty("webdriver.chrome.driver", "C://automation//chromedriver-win64//chromedriver-win64//chromedriver.exe");
+		driver=new RemoteWebDriver(new URL(nodeURL),cap);
+	}
+	
+	@Test(priority=2)
+	void login()
+	{
+		driver.get("https://practice.automationtesting.in/my-account/");
+		driver.findElement(By.id("username")).sendKeys("pavanoltraining");
+		driver.findElement(By.id("password")).sendKeys("Test@selenium123");
+		driver.findElement(By.name("login")).click();
+		String txt=driver.findElement(By.cssSelector(".woocommerce-MyAccount-content p:first-child")).getText();
+	if(txt.contains("pavanoltraining"))
+	{
+		System.out.println("test Passed");
+	}
+	else
+	{
+		System.out.println("Test Failed");
+	}
+	driver.close();
+	}
+}
